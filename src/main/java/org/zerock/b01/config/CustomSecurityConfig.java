@@ -56,6 +56,7 @@ public class CustomSecurityConfig {
                 .tokenValiditySeconds(60*60*24*30);
 
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler()); //403
+        http.oauth2Login().loginPage("/member/login");
 
         return http.build();
     }
@@ -77,5 +78,7 @@ public class CustomSecurityConfig {
     public AccessDeniedHandler accessDeniedHandler(){
         return new Custom403Handler();
     }
+
+
 
 }
